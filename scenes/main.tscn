@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://5u6s32tbyi4e"]
+
+[ext_resource type="Script" uid="uid://c0lemwetnlndp" path="res://scripts/generator.gd" id="1_o5qli"]
+[ext_resource type="Texture2D" uid="uid://66q7n4etpc6y" path="res://assets/Atomic Potato's grass tileset [16x16].png" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://4jvuusauimvs" path="res://scenes/player.tscn" id="3_sugp2"]
+[ext_resource type="Texture2D" uid="uid://cu3wdat0ouma0" path="res://icon.png" id="4_jyhfs"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sugp2"]
+texture = ExtResource("2_0wfyh")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_jyhfs"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_sugp2")
+
+[node name="Main" type="Node2D" unique_id=1905232831]
+
+[node name="Node2D" type="Node2D" parent="." unique_id=539471540]
+script = ExtResource("1_o5qli")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Node2D" unique_id=593710104]
+position = Vector2(1, 0)
+tile_set = SubResource("TileSet_jyhfs")
+
+[node name="CharacterBody2D" parent="Node2D" unique_id=1497261303 instance=ExtResource("3_sugp2")]
+
+[node name="Camera2D" type="Camera2D" parent="Node2D/CharacterBody2D" unique_id=288097623]
+
+[node name="MiningOverlay" type="Sprite2D" parent="Node2D" unique_id=1312022001]
+texture = ExtResource("4_jyhfs")

@@ -15,6 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="pixelart_template"
+run/main_scene="uid://5u6s32tbyi4e"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://cu3wdat0ouma0"
 
@@ -47,7 +48,7 @@ folder_colors={
 "res://build/": "gray",
 "res://objects/": "green",
 "res://scenes/": "green",
-"res://scripts/": "blue",
+"res://scripts/": "pink",
 "res://ui/": "blue"
 }
 
