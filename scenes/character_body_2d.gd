@@ -26,10 +26,43 @@ var onground_c = 0
 
 var isfalling = false;
 
+
+var is_recording = false;
+var positions : Array = [];
+
+var is_replaying = false;
+var replay_idx = 0;
+var replay_speed = 2000
+
 func _process(delta: float) -> void:
-	update_trajectory()
+	if !is_replaying && is_on_floor():
+		update_trajectory()
+	else:
+		trajectory_points.clear()
+
+
+func replay(delta : float) -> void:
+	if positions.is_empty() || replay_idx >= positions.size():
+		is_replaying = false 
+		return 
+		
+	var trgt = positions[positions.size() - replay_idx-1]
+	var dir = (trgt - position).normalized()
+	var dist = (trgt - position).length()
+	var step = replay_speed * delta 
+	
+	if step >= dist:
+		position = trgt
+		replay_idx += 1
+	else:
+		position += dir * step
 
 func _physics_process(delta):
+	if (is_replaying):
+		replay(delta)
+		return
+	
+	
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	
@@ -90,8 +123,11 @@ func _physics_process(delta):
 		if normal.y > 0:
 			if rocket:
 				velocity.y += randi_range(200, 400)
+				velocity.x += randi_range(-200, 200);
 			else:
 				velocity.y += randi_range(30, 60)
+				velocity.x += randi_range(-50, 50);
+				
 				
 			var j = on_wall.instantiate()
 			get_parent().add_child(j)
@@ -137,7 +173,11 @@ func _physics_process(delta):
 	
 	var on_floor_now = is_on_floor()
 	
+	if (is_recording):
+		positions.push_back(position)
+	
 	if not was_on_floor and on_floor_now and !isfalling:
+		is_recording = false
 		velocity.x = 0
 		var j = on_jump2.instantiate()
 		get_parent().add_child(j)
@@ -145,19 +185,34 @@ func _physics_process(delta):
 	
 	was_on_floor = on_floor_now
 
+func rollback_pos() -> void:
+	if !positions.is_empty():
+		is_replaying = true;
+
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			
 			aiming = true
 		else:
-			if aiming && is_on_floor() && !isfalling:
+			if aiming && is_on_floor() && !isfalling && !is_replaying:
+				is_recording = true
+				positions = []
+				Globals.back_is_recorded = true
+				
 				velocity = compute_jump_velocity(get_global_mouse_position())
+				var j = on_jump.instantiate()
+				get_parent().add_child(j)
+				j.global_position = global_position
 			aiming = false
 			trajectory_points.clear()
-			var j = on_jump.instantiate()
-			get_parent().add_child(j)
-			j.global_position = global_position
+			
+			
+	if event.is_action_pressed("b"):
+		if Globals.back_left > 0 && Globals.back_is_recorded && is_on_floor() && !isfalling && !is_replaying:
+			Globals.back_left -= 1
+			Globals.back_is_recorded = false
+			rollback_pos()
 	
 	queue_redraw()
 

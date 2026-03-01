@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://do0bgh0xgfp8e"]
+
+[ext_resource type="Texture2D" uid="uid://dbds5cjedwkfx" path="res://assets/images.jpg" id="1_j52kc"]
+[ext_resource type="Script" uid="uid://pabc5xrveodm" path="res://scenes/lift.gd" id="1_s4nly"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4nly"]
+size = Vector2(42, 42)
+
+[node name="lift" type="Node2D" unique_id=1562003676]
+script = ExtResource("1_s4nly")
+
+[node name="Images" type="Sprite2D" parent="." unique_id=1034773197]
+scale = Vector2(0.18444444, 0.18444444)
+texture = ExtResource("1_j52kc")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=601256174]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1844541788]
+shape = SubResource("RectangleShape2D_s4nly")

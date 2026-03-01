@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="pixelart_template"
-run/main_scene="uid://5u6s32tbyi4e"
+run/main_scene="uid://mlfopegdrvw6"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://cu3wdat0ouma0"
 
@@ -27,6 +27,7 @@ buses/default_bus_layout="uid://dlptv1a5o3dwc"
 
 Transition="*res://ui/transition/transition.tscn"
 SettingsCfg="*res://ui/settings/settings_cfg.gd"
+Globals="*uid://bfmqg2pqdxc5l"
 
 [display]
 
@@ -60,6 +61,14 @@ AudioSettings=""
 
 theme/custom="uid://b8ecc687tvf12"
 theme/custom_font="uid://b72dpbyv1r7a0"
+
+[input]
+
+b={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":66,"key_label":0,"unicode":98,"location":0,"echo":false,"script":null)
+]
+}
 
 [rendering]
 
