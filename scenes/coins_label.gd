@@ -1,8 +1,5 @@
-extends Node
+extends Label
 
-@export var back_left = 2
-@export var back_is_recorded = false
-@export var coins = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,4 +8,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	text = "Coins: %d" %  Globals.coins
+	label_settings.font_color = Color(255, 255,255)
+	
+	

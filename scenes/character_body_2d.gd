@@ -3,6 +3,7 @@ extends CharacterBody2D
 # --- CONFIG ---
 @export var jump_speed: float = 550.0      
 @export var gravity: float = 980.0      
+@export var dialogController : Node;
 
 var on_jump = preload("res://scenes/jump_animation.tscn");
 var on_jump2 = preload("res://scenes/jump2_animation.tscn");
@@ -35,7 +36,7 @@ var replay_idx = 0;
 var replay_speed = 2000
 
 func _process(delta: float) -> void:
-	if !is_replaying && is_on_floor():
+	if !is_replaying && is_on_floor() &&  !dialogController.dialog:
 		update_trajectory()
 	else:
 		trajectory_points.clear()
@@ -58,6 +59,8 @@ func replay(delta : float) -> void:
 		position += dir * step
 
 func _physics_process(delta):
+
+	
 	if (is_replaying):
 		replay(delta)
 		return
@@ -65,6 +68,12 @@ func _physics_process(delta):
 	
 	if not is_on_floor():
 		velocity.y += gravity * delta
+		
+		
+	if (dialogController.dialog):
+		velocity.x /= 3
+		velocity.y = clamp(velocity.y, 100 ,10000)
+		
 	
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
@@ -185,9 +194,7 @@ func _physics_process(delta):
 	
 	was_on_floor = on_floor_now
 
-func rollback_pos() -> void:
-	if !positions.is_empty():
-		is_replaying = true;
+
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -195,7 +202,7 @@ func _input(event):
 			
 			aiming = true
 		else:
-			if aiming && is_on_floor() && !isfalling && !is_replaying:
+			if !dialogController.dialog && aiming && is_on_floor() && !isfalling && !is_replaying:
 				is_recording = true
 				positions = []
 				Globals.back_is_recorded = true
@@ -209,10 +216,10 @@ func _input(event):
 			
 			
 	if event.is_action_pressed("b"):
-		if Globals.back_left > 0 && Globals.back_is_recorded && is_on_floor() && !isfalling && !is_replaying:
+		if !dialogController.dialog && !positions.is_empty() && Globals.back_left > 0 && Globals.back_is_recorded && is_on_floor() && !isfalling && !is_replaying:
 			Globals.back_left -= 1
 			Globals.back_is_recorded = false
-			rollback_pos()
+			is_replaying = true;
 	
 	queue_redraw()
 
