@@ -8,7 +8,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	text = "Press S to stop (%d)" %  Globals.stop_left
+	text = "S (%d)" %  Globals.stop_left
 
 
 	if  Globals.stop_left == 0:

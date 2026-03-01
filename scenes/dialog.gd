@@ -10,6 +10,10 @@ extends Control
 @onready var npc_enter = $npc/enter
 
 
+@onready var audioPlayer = $player/audio
+@onready var audioNpc = $npc/audio2
+
+
 var typing_speed := 0.03
 var current_text := ""
 var current_label : Label
@@ -22,17 +26,22 @@ var idx = 0
 
 var dialogs = [
 	{
-		"text": "I found some...",
+		"text": "I found some..." if Globals.coins != 0 else "I didn't :(",
 		"is_player": true,
 		"shop": false,
 	},
 	{
-		"text": "Let's see if we can make a deal.",
+		"text": "Let's see if we can make a deal." if Globals.coins != 0 else "How could you possibly not collect \n even a single one",
 		"is_player": false,
 		"shop": false,
 	},
 	{
-		"text" : "You give me ALL your crystalls, \n i give you some stuff",
+		"text" : "You give me ALL your crystalls, \n i give you some stuff"  if Globals.coins != 0 else "I will let you go further this time",
+
+		"is_player": false,
+		"shop": false,	},
+	{
+		"text" : "Also it's the only way to this door, \n so I think we have a deal"  if Globals.coins != 0 else "But you are not getting any bonuses",
 
 		"is_player": false,
 		"shop": true,	}
@@ -48,10 +57,12 @@ func show_dialog(text: String, is_player: bool, shop : bool):
 
 	# Choose who speaks
 	if is_player:
+		audioPlayer.play()
 		player.visible = true
 		player_enter.visible = false
 		current_label = player_label
 	else:
+		audioNpc.play()
 		npc.visible = true
 		npc_enter.visible = false
 		current_label = npc_label
@@ -73,9 +84,15 @@ func start_typewriter():
 	player_enter.visible = true
 	npc_enter.visible = true
 
+	audioNpc.stop()
+	audioPlayer.stop()
+
 func open_shop():
 	if Globals.coins == 0:
-		return
+		Globals.coins = 0
+		dialog = false
+		player.visible = false
+		npc.visible = false
 
 	var total = Globals.coins
 	var r1 = randf()

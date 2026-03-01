@@ -6,6 +6,12 @@ extends CharacterBody2D
 @export var gravity: float = 980.0
 @export var dialogController : Node;
 
+
+@onready var meow : AudioStreamPlayer2D  = $meow
+@onready var jump : AudioStreamPlayer2D = $jump
+@onready var hit : AudioStreamPlayer2D = $hit
+@onready var sand : AudioStreamPlayer2D = $sand
+
 var on_jump = preload("res://scenes/jump_animation.tscn");
 var on_jump2 = preload("res://scenes/jump2_animation.tscn");
 
@@ -14,6 +20,7 @@ var on_floot = preload("res://scenes/sideways.tscn");
 
 @onready var sprite1 : Sprite2D = $sprite_normal;
 @onready var sprite_wall : Sprite2D = $sprite_wall;
+
 
 
 var trajectory_points: Array[Vector2] = []
@@ -108,13 +115,21 @@ func _physics_process(delta):
 
 		if normal.x > 0:
 			if rocket:
+
+				var x = randi_range(1, 20)
+				if x == 3:
+					meow.play()
 				hit_val = randi_range(250, 400)
 
 			elif isfalling:
 				hit_val -= randi_range(15, 30)
 			else:
+				var x = randi_range(1, 20)
+				if x == 3:
+					meow.play()
 				hit_val = randi_range(150, 200)
 				isfalling = true
+			hit.play()
 			velocity.x += hit_val
 			velocity.y += randi_range(10,20)
 			onground_c = 0
@@ -125,11 +140,19 @@ func _physics_process(delta):
 
 		elif normal.x < 0:
 			if rocket:
+
+				var x = randi_range(1, 20)
+				if x == 3:
+					meow.play()
 				hit_val = randi_range(250, 400)
 
 			elif isfalling:
 				hit_val -= randi_range(15, 30)
 			else:
+
+				var x = randi_range(1, 20)
+				if x == 3:
+					meow.play()
 				hit_val = randi_range(150, 200)
 				isfalling = true
 
@@ -137,6 +160,7 @@ func _physics_process(delta):
 			velocity.y += randi_range(10,20)
 			var j = on_wall.instantiate()
 			get_parent().add_child(j)
+			hit.play()
 			j.global_position = global_position
 			j.scale.x *= -1
 
@@ -174,6 +198,7 @@ func _physics_process(delta):
 					var j = on_floot.instantiate()
 					get_parent().add_child(j)
 					j.global_position = global_position
+					sand.play()
 
 					if (velocity.x >0):
 						j.scale.x *= -1
@@ -220,6 +245,10 @@ func _input(event):
 		else:
 			if !dialogController.dialog && aiming && is_on_floor() && !isfalling && !is_replaying:
 				is_recording = true
+				var x = randi_range(1, 20)
+				if x == 3:
+					meow.play()
+				jump.play()
 				positions = []
 				Globals.back_is_recorded = true
 

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://fhr54nhkrtds"]
+
+[ext_resource type="Texture2D" uid="uid://dtwf3sysumqr1" path="res://assets/fakel.png" id="1_2olp6"]
+
+[sub_resource type="Gradient" id="Gradient_2olp6"]
+offsets = PackedFloat32Array(0.17252396, 0.7220447)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mddj3"]
+gradient = SubResource("Gradient_2olp6")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="fakel" type="Node2D" unique_id=1311236124]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1449803983]
+position = Vector2(-10, 0)
+scale = Vector2(0.07668725, 0.07668725)
+texture = ExtResource("1_2olp6")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=111993873]
+position = Vector2(-11, -6)
+scale = Vector2(1.03125, 1.0625)
+color = Color(0.72782034, 0.7068374, 0.30450368, 1)
+texture = SubResource("GradientTexture2D_mddj3")

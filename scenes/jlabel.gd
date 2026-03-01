@@ -8,7 +8,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	text = "Press J to jump higher (%d)" %  Globals.j_left
+	text = "J (%d)" %  Globals.j_left
 
 
 	if  Globals.j_left == 0:
