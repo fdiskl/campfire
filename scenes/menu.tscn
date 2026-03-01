@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://crp0hso2rw487" path="res://ui/premade_button/premade_button_sett.tscn" id="5_4ytvr"]
 [ext_resource type="Script" uid="uid://cpw3fwcamaulf" path="res://ui/premade_button/premade_button_sett.gd" id="6_g3eks"]
 [ext_resource type="Script" uid="uid://dy0mxyxji4dsa" path="res://scenes/closebutton.gd" id="7_v86rl"]
+[ext_resource type="Texture2D" uid="uid://cywcmdl4i7q3o" path="res://assets/bs2.png" id="8_13sgg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g3eks"]
 bg_color = Color(0, 0, 0, 0.8156863)
@@ -17,6 +18,87 @@ corner_radius_bottom_left = 8
 
 [sub_resource type="LabelSettings" id="LabelSettings_g3eks"]
 font_size = 22
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6lef"]
+atlas = ExtResource("8_13sgg")
+region = Rect2(0, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70i5f"]
+atlas = ExtResource("8_13sgg")
+region = Rect2(1280, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mj5lg"]
+atlas = ExtResource("8_13sgg")
+region = Rect2(2560, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufwb2"]
+atlas = ExtResource("8_13sgg")
+region = Rect2(3840, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cdou"]
+atlas = ExtResource("8_13sgg")
+region = Rect2(5120, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i42df"]
+atlas = ExtResource("8_13sgg")
+region = Rect2(6400, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jp70"]
+atlas = ExtResource("8_13sgg")
+region = Rect2(7680, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxgkd"]
+atlas = ExtResource("8_13sgg")
+region = Rect2(8960, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6gyw"]
+atlas = ExtResource("8_13sgg")
+region = Rect2(10240, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dmrc"]
+atlas = ExtResource("8_13sgg")
+region = Rect2(11520, 0, 1280, 720)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_81l6r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6lef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70i5f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mj5lg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufwb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6cdou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i42df")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jp70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mxgkd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6gyw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3dmrc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_13sgg"]
+font_size = 32
 
 [node name="TestScene" type="Control" unique_id=117733131]
 layout_mode = 3
@@ -29,13 +111,14 @@ metadata/_edit_lock_ = true
 
 [node name="PremadeButton" parent="." unique_id=1222654470 instance=ExtResource("2_mhnvy")]
 layout_mode = 0
-offset_left = 108.0
-offset_top = 132.0
-offset_right = 176.0
-offset_bottom = 176.0
+offset_left = 399.0
+offset_top = 185.0
+offset_right = 499.0
+offset_bottom = 235.0
 script = ExtResource("3_4ytvr")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1425068257]
+position = Vector2(-1, 105)
 stream = ExtResource("4_mhnvy")
 autoplay = true
 bus = &"Music"
@@ -43,10 +126,10 @@ parameters/looping = true
 
 [node name="PremadeButton2" parent="." unique_id=1263851548 node_paths=PackedStringArray("n") instance=ExtResource("5_4ytvr")]
 layout_mode = 0
-offset_left = 244.0
-offset_top = 136.0
-offset_right = 328.0
-offset_bottom = 176.0
+offset_left = 399.0
+offset_top = 265.0
+offset_right = 499.0
+offset_bottom = 315.0
 script = ExtResource("6_g3eks")
 n = NodePath("../Panel")
 
@@ -82,3 +165,20 @@ offset_right = 49.0
 offset_bottom = 40.5
 text = "x"
 label_settings = SubResource("LabelSettings_g3eks")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=578442875]
+z_index = -200
+position = Vector2(320, 179)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_81l6r")
+autoplay = "default"
+frame_progress = 0.9877074
+
+[node name="Label" type="Label" parent="." unique_id=2090649831]
+layout_mode = 0
+offset_left = 317.0
+offset_top = 80.0
+offset_right = 613.0
+offset_bottom = 136.0
+text = "Deep in the mine"
+label_settings = SubResource("LabelSettings_13sgg")

@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var dialogController : Node
+@onready var dialogController : Node = get_tree().current_scene.find_child("MAINCONTROL", true , false).get_node("Dialog")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

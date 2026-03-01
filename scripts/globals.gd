@@ -7,7 +7,7 @@ extends Node
 @export var coins = 0
 @export var level = 0
 
-@export var levels = ["tutorial", "main"]
+@export var levels = ["tutorial", "main", "main2", "menu2"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

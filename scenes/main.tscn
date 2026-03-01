@@ -9,17 +9,12 @@
 [ext_resource type="AudioStream" uid="uid://caf3jmblskcc1" path="res://assets/sound/678424-crunchymaniac-hardhit3-full-hard-hits_We5XxJQ4.mp3" id="5_dp3eg"]
 [ext_resource type="PackedScene" uid="uid://bocrvnhujs4x6" path="res://scenes/sideways.tscn" id="5_tbgi4"]
 [ext_resource type="AudioStream" uid="uid://cal3d06irqdpk" path="res://assets/sound/778536__blondpanda__steps_fine_snow_or_sand_gentle_17.wav" id="6_0ld40"]
-[ext_resource type="Script" uid="uid://dhi1hqqqpo2eo" path="res://scenes/jlabel.gd" id="6_a8y0u"]
-[ext_resource type="Script" uid="uid://bbbdf78epouag" path="res://scenes/coins_label.gd" id="6_choun"]
 [ext_resource type="PackedScene" uid="uid://do0bgh0xgfp8e" path="res://scenes/lift.tscn" id="6_tefeu"]
-[ext_resource type="Script" uid="uid://btmqrfgo1y35u" path="res://scenes/slabel.gd" id="7_jkv2x"]
-[ext_resource type="Script" uid="uid://bh524dn710eg5" path="res://scenes/back_label.gd" id="7_o6xl0"]
-[ext_resource type="Script" uid="uid://3tf16ak1t7q6" path="res://scenes/dialog.gd" id="7_ya4ey"]
 [ext_resource type="Script" uid="uid://c8hgn7en781nd" path="res://scenes/coin_spawner.gd" id="8_tipki"]
 [ext_resource type="PackedScene" uid="uid://cb4ejfa0322jj" path="res://scenes/coin.tscn" id="9_85g3d"]
+[ext_resource type="PackedScene" uid="uid://dqqgm0op857g" path="res://scenes/control.tscn" id="9_jbj1t"]
 [ext_resource type="Script" uid="uid://b4ll57e6l4q6f" path="res://scenes/npc.gd" id="12_eb6dy"]
-[ext_resource type="AudioStream" uid="uid://dapavur2jpusi" path="res://assets/sound/speaking-animal-crossing-made-with-Voicemod.mp3" id="14_jscy8"]
-[ext_resource type="AudioStream" uid="uid://b3t1ukknmo1lj" path="res://assets/sound/animal-crossing-talking-made-with-Voicemod.mp3" id="15_pm3ni"]
+[ext_resource type="AudioStream" uid="uid://de74g77rvqlj2" path="res://scenes/there_is_no_real_exit.mp3" id="17_muem4"]
 [ext_resource type="PackedScene" uid="uid://fhr54nhkrtds" path="res://scenes/fakel.tscn" id="18_0ld40"]
 [ext_resource type="Texture2D" uid="uid://fdux8rpi0o4x" path="res://assets/Untitled.png" id="20_gqmmt"]
 
@@ -183,33 +178,6 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/2 = SubResource("TileSetAtlasSource_sugp2")
 sources/0 = SubResource("TileSetAtlasSource_jbj1t")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0ld40"]
-atlas = ExtResource("3_jkv2x")
-region = Rect2(80, 0, 16, 16)
-
-[sub_resource type="LabelSettings" id="LabelSettings_o6xl0"]
-font_size = 8
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gqmmt"]
-atlas = ExtResource("3_jkv2x")
-region = Rect2(210, 2, 12, 12)
-
-[sub_resource type="LabelSettings" id="LabelSettings_muem4"]
-font_size = 8
-
-[sub_resource type="LabelSettings" id="LabelSettings_jbj1t"]
-font_size = 8
-
-[sub_resource type="LabelSettings" id="LabelSettings_choun"]
-font_size = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_choun"]
-bg_color = Color(0, 0, 0, 0.6117647)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dp3eg"]
-atlas = ExtResource("3_jkv2x")
-region = Rect2(148, 0, 25, 32)
-
 [sub_resource type="Gradient" id="Gradient_0ld40"]
 offsets = PackedFloat32Array(0.17252396, 0.7060703)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -218,16 +186,6 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 gradient = SubResource("Gradient_0ld40")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-
-[sub_resource type="LabelSettings" id="LabelSettings_a8y0u"]
-font_size = 1
-
-[sub_resource type="LabelSettings" id="LabelSettings_trceg"]
-font_size = 1
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jscy8"]
-atlas = ExtResource("3_jkv2x")
-region = Rect2(243, 0, 29, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yc10j"]
 atlas = ExtResource("3_jkv2x")
@@ -252,10 +210,9 @@ color = Color(0.503897, 0.44124123, 0.3452783, 1)
 
 [node name="Node2D" type="Node2D" parent="." unique_id=280892988]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Node2D" unique_id=580963430 node_paths=PackedStringArray("dialogController")]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Node2D" unique_id=580963430]
 position = Vector2(298, 267)
 script = ExtResource("1_0wfyh")
-dialogController = NodePath("../Camera2D/Control/Dialog")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/CharacterBody2D" unique_id=371799014]
 position = Vector2(0, 1)
@@ -302,170 +259,7 @@ position_smoothing_speed = 100.0
 script = ExtResource("4_tbgi4")
 player = NodePath("../CharacterBody2D")
 
-[node name="Control" type="Control" parent="Node2D/Camera2D" unique_id=1642158382]
-z_index = 126
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -177.0
-offset_top = -100.0
-offset_right = -177.0
-offset_bottom = -100.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="Node2D/Camera2D/Control" unique_id=1488013463]
-layout_mode = 0
-offset_left = 301.0
-offset_top = 149.0
-offset_right = 341.0
-offset_bottom = 189.0
-scale = Vector2(0.3497338, 0.3497338)
-texture = SubResource("AtlasTexture_0ld40")
-
-[node name="Label" type="Label" parent="Node2D/Camera2D/Control" unique_id=1621043602]
-layout_mode = 0
-offset_left = 319.0
-offset_top = 151.0
-offset_right = 423.0
-offset_bottom = 165.0
-text = "B (2)"
-label_settings = SubResource("LabelSettings_o6xl0")
-script = ExtResource("7_o6xl0")
-
-[node name="TextureRect2" type="TextureRect" parent="Node2D/Camera2D/Control" unique_id=1383056865]
-layout_mode = 0
-offset_left = 301.0
-offset_top = 167.0
-offset_right = 341.0
-offset_bottom = 207.0
-scale = Vector2(0.35269365, 0.35269365)
-texture = SubResource("AtlasTexture_gqmmt")
-
-[node name="Label3" type="Label" parent="Node2D/Camera2D/Control" unique_id=1494504322]
-layout_mode = 0
-offset_left = 319.0
-offset_top = 169.0
-offset_right = 446.0
-offset_bottom = 186.5
-text = "S (2)"
-label_settings = SubResource("LabelSettings_muem4")
-script = ExtResource("7_jkv2x")
-
-[node name="Label4" type="Label" parent="Node2D/Camera2D/Control" unique_id=1961837276]
-layout_mode = 0
-offset_left = 318.0
-offset_top = 184.0
-offset_right = 446.0
-offset_bottom = 201.5
-text = "J (2)"
-label_settings = SubResource("LabelSettings_jbj1t")
-script = ExtResource("6_a8y0u")
-
-[node name="Label2" type="Label" parent="Node2D/Camera2D/Control" unique_id=1077040347]
-layout_mode = 0
-offset_left = 281.0
-offset_top = 8.0
-offset_right = 408.0
-offset_bottom = 25.5
-text = "Crystals: 0"
-label_settings = SubResource("LabelSettings_choun")
-script = ExtResource("6_choun")
-
-[node name="Dialog" type="Control" parent="Node2D/Camera2D/Control" unique_id=1752486321]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(8.8, 4.96)
-script = ExtResource("7_ya4ey")
-
-[node name="player" type="Panel" parent="Node2D/Camera2D/Control/Dialog" unique_id=1423752320]
-visible = false
-layout_mode = 0
-offset_top = 27.21774
-offset_right = 40.227272
-offset_bottom = 41.008064
-theme_override_styles/panel = SubResource("StyleBoxFlat_choun")
-
-[node name="TextureRect" type="TextureRect" parent="Node2D/Camera2D/Control/Dialog/player" unique_id=1408803324]
-layout_mode = 0
-offset_top = -1.2096748
-offset_right = 9.772726
-offset_bottom = 13.3871
-texture = SubResource("AtlasTexture_dp3eg")
-expand_mode = 1
-
-[node name="PointLight2D3" type="PointLight2D" parent="Node2D/Camera2D/Control/Dialog/player/TextureRect" unique_id=1235959613]
-position = Vector2(5.11364, 7.8629)
-scale = Vector2(0.22029105, 0.39083892)
-texture = SubResource("GradientTexture2D_gqmmt")
-
-[node name="enter" type="Label" parent="Node2D/Camera2D/Control/Dialog/player" unique_id=498496679]
-layout_mode = 0
-offset_left = 23.40909
-offset_top = 10.887095
-offset_right = 40.454544
-offset_bottom = 13.104831
-text = "Press Enter to continue..."
-label_settings = SubResource("LabelSettings_a8y0u")
-
-[node name="Label" type="Label" parent="Node2D/Camera2D/Control/Dialog/player" unique_id=6771283]
-layout_mode = 0
-offset_left = 11.818181
-offset_top = 1.2096748
-offset_right = 39.318176
-offset_bottom = 12.096771
-label_settings = SubResource("LabelSettings_trceg")
-
-[node name="audio" type="AudioStreamPlayer2D" parent="Node2D/Camera2D/Control/Dialog/player" unique_id=1307910997]
-stream = ExtResource("14_jscy8")
-bus = &"SFX"
-
-[node name="npc" type="Panel" parent="Node2D/Camera2D/Control/Dialog" unique_id=1152785776]
-visible = false
-layout_mode = 0
-offset_top = 27.01613
-offset_right = 40.227272
-offset_bottom = 40.80645
-theme_override_styles/panel = SubResource("StyleBoxFlat_choun")
-
-[node name="Label" type="Label" parent="Node2D/Camera2D/Control/Dialog/npc" unique_id=850539392]
-layout_mode = 0
-offset_left = 0.909091
-offset_top = 1.2096748
-offset_right = 28.409088
-offset_bottom = 12.096771
-label_settings = SubResource("LabelSettings_trceg")
-
-[node name="TextureRect" type="TextureRect" parent="Node2D/Camera2D/Control/Dialog/npc" unique_id=1126274151]
-layout_mode = 0
-offset_left = 30.227272
-offset_top = -1.0080619
-offset_right = 40.0
-offset_bottom = 13.588713
-texture = SubResource("AtlasTexture_jscy8")
-expand_mode = 1
-
-[node name="PointLight2D2" type="PointLight2D" parent="Node2D/Camera2D/Control/Dialog/npc/TextureRect" unique_id=1698384753]
-position = Vector2(4.7727265, 7.862903)
-scale = Vector2(0.22029105, 0.39083895)
-texture = SubResource("GradientTexture2D_gqmmt")
-
-[node name="enter" type="Label" parent="Node2D/Camera2D/Control/Dialog/npc" unique_id=485734097]
-layout_mode = 0
-offset_left = 15.113636
-offset_top = 10.685483
-offset_right = 32.15909
-offset_bottom = 12.903218
-text = "Press Enter to continue..."
-label_settings = SubResource("LabelSettings_a8y0u")
-
-[node name="audio2" type="AudioStreamPlayer2D" parent="Node2D/Camera2D/Control/Dialog/npc" unique_id=1991752749]
-position = Vector2(0, 0.20161057)
-scale = Vector2(1, 0.99999994)
-stream = ExtResource("15_pm3ni")
-bus = &"SFX"
+[node name="MAINCONTROL" parent="Node2D/Camera2D" unique_id=513951934 instance=ExtResource("9_jbj1t")]
 
 [node name="sideways" parent="Node2D" unique_id=1103690808 instance=ExtResource("5_tbgi4")]
 
@@ -640,9 +434,8 @@ scale = Vector2(2.125, 2.125)
 texture = SubResource("AtlasTexture_yc10j")
 flip_h = true
 
-[node name="Area2D" type="Area2D" parent="Node2D/Node2D" unique_id=2104299247 node_paths=PackedStringArray("dialogController")]
+[node name="Area2D" type="Area2D" parent="Node2D/Node2D" unique_id=2104299247]
 script = ExtResource("12_eb6dy")
-dialogController = NodePath("../../Camera2D/Control/Dialog")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Node2D/Area2D" unique_id=691967012]
 position = Vector2(0.5, -3)
@@ -813,3 +606,9 @@ position = Vector2(421, -321.25003)
 scale = Vector2(1.4062504, 0.882813)
 color = Color(0.23921569, 1, 0, 1)
 texture = SubResource("GradientTexture2D_jbj1t")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1705487681]
+stream = ExtResource("17_muem4")
+autoplay = true
+bus = &"Music"
+parameters/looping = true

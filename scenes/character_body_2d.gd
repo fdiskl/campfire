@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var jump_speed0: float = 550.0
 @export var jump_speed: float = 550.0
 @export var gravity: float = 980.0
-@export var dialogController : Node;
+@onready var dialogController : Node = get_tree().current_scene.find_child("MAINCONTROL", true , false).get_node("Dialog")
 
 
 @onready var meow : AudioStreamPlayer2D  = $meow

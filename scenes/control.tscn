@@ -1,0 +1,231 @@
+[gd_scene format=3 uid="uid://dqqgm0op857g"]
+
+[ext_resource type="Texture2D" uid="uid://64r2mphl5ftm" path="res://assets/map (2).png" id="1_1p5nq"]
+[ext_resource type="Script" uid="uid://bh524dn710eg5" path="res://scenes/back_label.gd" id="2_hob4j"]
+[ext_resource type="Script" uid="uid://btmqrfgo1y35u" path="res://scenes/slabel.gd" id="3_01bab"]
+[ext_resource type="Script" uid="uid://dhi1hqqqpo2eo" path="res://scenes/jlabel.gd" id="4_exs80"]
+[ext_resource type="Texture2D" uid="uid://iueq7y0wpme2" path="res://assets/bot.png" id="4_hob4j"]
+[ext_resource type="Script" uid="uid://bbbdf78epouag" path="res://scenes/coins_label.gd" id="5_kql7n"]
+[ext_resource type="Script" uid="uid://3tf16ak1t7q6" path="res://scenes/dialog.gd" id="6_tac8f"]
+[ext_resource type="AudioStream" uid="uid://dapavur2jpusi" path="res://assets/sound/speaking-animal-crossing-made-with-Voicemod.mp3" id="7_vb5ih"]
+[ext_resource type="AudioStream" uid="uid://b3t1ukknmo1lj" path="res://assets/sound/animal-crossing-talking-made-with-Voicemod.mp3" id="8_6pn8l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ld40"]
+atlas = ExtResource("1_1p5nq")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o6xl0"]
+font_size = 8
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqmmt"]
+atlas = ExtResource("1_1p5nq")
+region = Rect2(210, 2, 12, 12)
+
+[sub_resource type="LabelSettings" id="LabelSettings_muem4"]
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_jbj1t"]
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_choun"]
+font_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_choun"]
+bg_color = Color(0, 0, 0, 0.6117647)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dp3eg"]
+atlas = ExtResource("1_1p5nq")
+region = Rect2(148, 0, 25, 32)
+
+[sub_resource type="Gradient" id="Gradient_0ld40"]
+offsets = PackedFloat32Array(0.17252396, 0.7060703)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gqmmt"]
+gradient = SubResource("Gradient_0ld40")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a8y0u"]
+font_size = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_trceg"]
+font_size = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jscy8"]
+atlas = ExtResource("1_1p5nq")
+region = Rect2(243, 0, 29, 32)
+
+[node name="Control" type="Control" unique_id=513951934]
+z_index = 126
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -177.0
+offset_top = -100.0
+offset_right = -177.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1127396367]
+layout_mode = 0
+offset_left = 301.0
+offset_top = 149.0
+offset_right = 341.0
+offset_bottom = 189.0
+scale = Vector2(0.3497338, 0.3497338)
+texture = SubResource("AtlasTexture_0ld40")
+
+[node name="Label" type="Label" parent="." unique_id=1912993366]
+layout_mode = 0
+offset_left = 319.0
+offset_top = 151.0
+offset_right = 423.0
+offset_bottom = 165.0
+text = "B (2)"
+label_settings = SubResource("LabelSettings_o6xl0")
+script = ExtResource("2_hob4j")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=26745456]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 165.0
+offset_right = 340.0
+offset_bottom = 205.0
+scale = Vector2(0.35269365, 0.35269365)
+texture = SubResource("AtlasTexture_gqmmt")
+
+[node name="Label3" type="Label" parent="." unique_id=671395404]
+layout_mode = 0
+offset_left = 319.0
+offset_top = 169.0
+offset_right = 446.0
+offset_bottom = 186.5
+text = "S (2)"
+label_settings = SubResource("LabelSettings_muem4")
+script = ExtResource("3_01bab")
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=1048519669]
+layout_mode = 0
+offset_left = 301.0
+offset_top = 182.0
+offset_right = 341.0
+offset_bottom = 222.0
+scale = Vector2(0.35269365, 0.35269365)
+texture = ExtResource("4_hob4j")
+
+[node name="Label4" type="Label" parent="." unique_id=632752311]
+layout_mode = 0
+offset_left = 318.0
+offset_top = 184.0
+offset_right = 446.0
+offset_bottom = 201.5
+text = "J (2)"
+label_settings = SubResource("LabelSettings_jbj1t")
+script = ExtResource("4_exs80")
+
+[node name="Label2" type="Label" parent="." unique_id=1331830648]
+layout_mode = 0
+offset_left = 281.0
+offset_top = 8.0
+offset_right = 408.0
+offset_bottom = 25.5
+text = "Crystals: 0"
+label_settings = SubResource("LabelSettings_choun")
+script = ExtResource("5_kql7n")
+
+[node name="Dialog" type="Control" parent="." unique_id=1601402200]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(8.8, 4.96)
+script = ExtResource("6_tac8f")
+
+[node name="player" type="Panel" parent="Dialog" unique_id=320379196]
+visible = false
+layout_mode = 0
+offset_top = 27.21774
+offset_right = 40.227272
+offset_bottom = 41.008064
+theme_override_styles/panel = SubResource("StyleBoxFlat_choun")
+
+[node name="TextureRect" type="TextureRect" parent="Dialog/player" unique_id=2113428079]
+layout_mode = 0
+offset_top = -1.2096748
+offset_right = 9.772726
+offset_bottom = 13.3871
+texture = SubResource("AtlasTexture_dp3eg")
+expand_mode = 1
+
+[node name="PointLight2D3" type="PointLight2D" parent="Dialog/player/TextureRect" unique_id=211898123]
+position = Vector2(5.11364, 7.8629)
+scale = Vector2(0.22029105, 0.39083892)
+texture = SubResource("GradientTexture2D_gqmmt")
+
+[node name="enter" type="Label" parent="Dialog/player" unique_id=244871322]
+layout_mode = 0
+offset_left = 23.40909
+offset_top = 10.887095
+offset_right = 40.454544
+offset_bottom = 13.104831
+text = "Press Enter to continue..."
+label_settings = SubResource("LabelSettings_a8y0u")
+
+[node name="Label" type="Label" parent="Dialog/player" unique_id=1304494337]
+layout_mode = 0
+offset_left = 11.818181
+offset_top = 1.2096748
+offset_right = 39.318176
+offset_bottom = 12.096771
+label_settings = SubResource("LabelSettings_trceg")
+
+[node name="audio" type="AudioStreamPlayer2D" parent="Dialog/player" unique_id=655589819]
+stream = ExtResource("7_vb5ih")
+bus = &"SFX"
+
+[node name="npc" type="Panel" parent="Dialog" unique_id=1446843925]
+visible = false
+layout_mode = 0
+offset_top = 27.01613
+offset_right = 40.227272
+offset_bottom = 40.80645
+theme_override_styles/panel = SubResource("StyleBoxFlat_choun")
+
+[node name="Label" type="Label" parent="Dialog/npc" unique_id=571075952]
+layout_mode = 0
+offset_left = 0.909091
+offset_top = 1.2096748
+offset_right = 28.409088
+offset_bottom = 12.096771
+label_settings = SubResource("LabelSettings_trceg")
+
+[node name="TextureRect" type="TextureRect" parent="Dialog/npc" unique_id=1613679323]
+layout_mode = 0
+offset_left = 30.227272
+offset_top = -1.0080619
+offset_right = 40.0
+offset_bottom = 13.588713
+texture = SubResource("AtlasTexture_jscy8")
+expand_mode = 1
+
+[node name="PointLight2D2" type="PointLight2D" parent="Dialog/npc/TextureRect" unique_id=1464558428]
+position = Vector2(4.7727265, 7.862903)
+scale = Vector2(0.22029105, 0.39083895)
+texture = SubResource("GradientTexture2D_gqmmt")
+
+[node name="enter" type="Label" parent="Dialog/npc" unique_id=1542423473]
+layout_mode = 0
+offset_left = 15.113636
+offset_top = 10.685483
+offset_right = 32.15909
+offset_bottom = 12.903218
+text = "Press Enter to continue..."
+label_settings = SubResource("LabelSettings_a8y0u")
+
+[node name="audio2" type="AudioStreamPlayer2D" parent="Dialog/npc" unique_id=1330039758]
+position = Vector2(0, 0.20161057)
+scale = Vector2(1, 0.99999994)
+stream = ExtResource("8_6pn8l")
+bus = &"SFX"
