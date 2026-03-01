@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://crp0hso2rw487"]
+
+[ext_resource type="Texture2D" uid="uid://bb8o81ao1k5eg" path="res://assets/temperary/button_normal.png" id="1_got7t"]
+[ext_resource type="Texture2D" uid="uid://cip27x0vv7ae8" path="res://assets/temperary/button_pushed.png" id="2_gslfm"]
+[ext_resource type="Texture2D" uid="uid://bn5em7yl11u5c" path="res://assets/temperary/button_hovered.png" id="3_lnvce"]
+
+[node name="PremadeButton" type="TextureButton" unique_id=1263851548]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("1_got7t")
+texture_pressed = ExtResource("2_gslfm")
+texture_hover = ExtResource("3_lnvce")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="." unique_id=341241324]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true

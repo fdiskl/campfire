@@ -1,10 +1,13 @@
 extends Node
 
-@export var back_left = 2
-@export var stop_left = 2
-@export var j_left = 2
+@export var back_left = 1
+@export var stop_left = 1
+@export var j_left = 1
 @export var back_is_recorded = false
 @export var coins = 0
+@export var level = 0
+
+@export var levels = ["tutorial", "main"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

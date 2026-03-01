@@ -24,28 +24,29 @@ var shopg := false
 
 var idx = 0
 
-var dialogs = [
-	{
-		"text": "I found some..." if Globals.coins != 0 else "I didn't :(",
-		"is_player": true,
-		"shop": false,
-	},
-	{
-		"text": "Let's see if we can make a deal." if Globals.coins != 0 else "How could you possibly not collect \n even a single one",
-		"is_player": false,
-		"shop": false,
-	},
-	{
-		"text" : "You give me ALL your crystalls, \n i give you some stuff"  if Globals.coins != 0 else "I will let you go further this time",
+func get_dialog(coins):
+	return [
+		{
+			"text": "I found some..." if coins != 0 else "I didn't :(",
+			"is_player": true,
+			"shop": false,
+		},
+		{
+			"text": "Let's see if we can make a deal." if coins != 0 else "How could you possibly not collect \n even a single one",
+			"is_player": false,
+			"shop": false,
+		},
+		{
+			"text" : "You give me ALL your crystalls, \n i give you some stuff"  if coins != 0 else "I will let you go further this time",
 
-		"is_player": false,
-		"shop": false,	},
-	{
-		"text" : "Also it's the only way to this door, \n so I think we have a deal"  if Globals.coins != 0 else "But you are not getting any bonuses",
+			"is_player": false,
+			"shop": false,	},
+		{
+			"text" : "Also it's the only way to this door, \n so I think we have a deal"  if coins != 0 else "But you are not getting any bonuses",
 
-		"is_player": false,
-		"shop": true,	}
-]
+			"is_player": false,
+			"shop": true,	}
+	]
 
 func show_dialog(text: String, is_player: bool, shop : bool):
 	if shop:
@@ -93,6 +94,11 @@ func open_shop():
 		dialog = false
 		player.visible = false
 		npc.visible = false
+		Globals.level+=1
+		if Globals.level <= Globals.levels.size() - 1:
+			get_tree().change_scene_to_file("res://scenes/%s.tscn" % Globals.levels[Globals.level] )
+		else:
+			pass # TODO: you won
 
 	var total = Globals.coins
 	var r1 = randf()
@@ -112,10 +118,16 @@ func open_shop():
 	dialog = false
 	player.visible = false
 	npc.visible = false
+	Globals.level+=1
+	if Globals.level <= Globals.levels.size() - 1:
+		get_tree().change_scene_to_file("res://scenes/%s.tscn" % Globals.levels[Globals.level] )
+	else:
+		pass # TODO: you won
 
 func _next():
 	if (shopg):
 		open_shop()
+	var dialogs = get_dialog(Globals.coins)
 	if (idx >= dialogs.size()):
 		return
 	var d = dialogs[idx]

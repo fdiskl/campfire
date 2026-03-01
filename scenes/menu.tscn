@@ -3,6 +3,20 @@
 [ext_resource type="PackedScene" uid="uid://i0n7cjiw24yl" path="res://ui/settings/audio_settings/audio_settings.tscn" id="1_con2f"]
 [ext_resource type="PackedScene" uid="uid://c4cbgi0tgwths" path="res://ui/premade_button/premade_button.tscn" id="2_mhnvy"]
 [ext_resource type="Script" uid="uid://c1cbcsqoa4u6t" path="res://ui/premade_button/start_button.gd" id="3_4ytvr"]
+[ext_resource type="AudioStream" uid="uid://30ujcu6p5j7v" path="res://kotmenu_short_final.mp3" id="4_mhnvy"]
+[ext_resource type="PackedScene" uid="uid://crp0hso2rw487" path="res://ui/premade_button/premade_button_sett.tscn" id="5_4ytvr"]
+[ext_resource type="Script" uid="uid://cpw3fwcamaulf" path="res://ui/premade_button/premade_button_sett.gd" id="6_g3eks"]
+[ext_resource type="Script" uid="uid://dy0mxyxji4dsa" path="res://scenes/closebutton.gd" id="7_v86rl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g3eks"]
+bg_color = Color(0, 0, 0, 0.8156863)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_g3eks"]
+font_size = 22
 
 [node name="TestScene" type="Control" unique_id=117733131]
 layout_mode = 3
@@ -13,17 +27,58 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="AudioSettings" parent="." unique_id=1939784139 instance=ExtResource("1_con2f")]
-layout_mode = 1
-offset_left = 24.0
-offset_top = 26.0
-offset_right = -384.0
-offset_bottom = -223.0
-
 [node name="PremadeButton" parent="." unique_id=1222654470 instance=ExtResource("2_mhnvy")]
 layout_mode = 0
-offset_left = 171.0
-offset_top = 174.0
-offset_right = 222.0
-offset_bottom = 211.0
+offset_left = 108.0
+offset_top = 132.0
+offset_right = 176.0
+offset_bottom = 176.0
 script = ExtResource("3_4ytvr")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1425068257]
+stream = ExtResource("4_mhnvy")
+autoplay = true
+bus = &"Music"
+parameters/looping = true
+
+[node name="PremadeButton2" parent="." unique_id=1263851548 node_paths=PackedStringArray("n") instance=ExtResource("5_4ytvr")]
+layout_mode = 0
+offset_left = 244.0
+offset_top = 136.0
+offset_right = 328.0
+offset_bottom = 176.0
+script = ExtResource("6_g3eks")
+n = NodePath("../Panel")
+
+[node name="Panel" type="Panel" parent="." unique_id=1882485956]
+visible = false
+layout_mode = 0
+offset_left = 140.0
+offset_top = 42.0
+offset_right = 493.0
+offset_bottom = 291.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_g3eks")
+
+[node name="AudioSettings" parent="Panel" unique_id=1939784139 instance=ExtResource("1_con2f")]
+layout_mode = 1
+offset_left = 38.0
+offset_top = 79.0
+offset_right = -30.0
+offset_bottom = -54.0
+
+[node name="Button" type="Button" parent="Panel" unique_id=1764151266]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 9.0
+offset_right = 54.0
+offset_bottom = 45.0
+script = ExtResource("7_v86rl")
+
+[node name="Label" type="Label" parent="Panel/Button" unique_id=2040109330]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 2.0
+offset_right = 49.0
+offset_bottom = 40.5
+text = "x"
+label_settings = SubResource("LabelSettings_g3eks")
