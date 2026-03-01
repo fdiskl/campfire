@@ -45,7 +45,7 @@ func show_dialog(text: String, is_player: bool, shop : bool):
 	# Hide both first
 	player.visible = false
 	npc.visible = false
-	
+
 	# Choose who speaks
 	if is_player:
 		player.visible = true
@@ -55,35 +55,47 @@ func show_dialog(text: String, is_player: bool, shop : bool):
 		npc.visible = true
 		npc_enter.visible = false
 		current_label = npc_label
-	
+
 	current_text = text
 	current_label.text = ""
 	current_label.label_settings.font_size = 1
-	
+
 	start_typewriter()
-	
+
 func start_typewriter():
 	typing = true
-	
+
 	for i in current_text.length():
 		current_label.text += current_text[i]
 		await get_tree().create_timer(typing_speed).timeout
-	
+
 	typing = false
 	player_enter.visible = true
 	npc_enter.visible = true
-	
+
 func open_shop():
-	var v = Globals.coins % randi_range(1,3)
-	if Globals.coins != 0 && v == 0:
-		v += 1
-	print(Globals.back_left, " ", v )
-	Globals.back_left += v
+	if Globals.coins == 0:
+		return
+
+	var total = Globals.coins
+	var r1 = randf()
+	var r2 = randf()
+	var r3 = randf()
+	var sum_r = r1 + r2 + r3
+
+	var add_back = abs(round(r1 / sum_r * total))
+	var add_stop = abs(round(r2 / sum_r * total))
+	var add_j = abs(total - add_back - add_stop)
+
+	Globals.back_left += add_back
+	Globals.stop_left += add_stop
+	Globals.j_left += add_j
+
 	Globals.coins = 0
 	dialog = false
 	player.visible = false
 	npc.visible = false
-	
+
 func _next():
 	if (shopg):
 		open_shop()
@@ -92,7 +104,7 @@ func _next():
 	var d = dialogs[idx]
 	show_dialog(d["text"], d["is_player"], d["shop"])
 	idx +=1
-	
-func _input(event) -> void:	
+
+func _input(event) -> void:
 	if event.is_action_pressed("ui_accept") && !typing:
 		_next()

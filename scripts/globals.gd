@@ -1,6 +1,8 @@
 extends Node
 
 @export var back_left = 2
+@export var stop_left = 2
+@export var j_left = 2
 @export var back_is_recorded = false
 @export var coins = 0
 

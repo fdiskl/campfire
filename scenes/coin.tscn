@@ -1,16 +1,29 @@
 [gd_scene format=3 uid="uid://cb4ejfa0322jj"]
 
+[ext_resource type="Texture2D" uid="uid://64r2mphl5ftm" path="res://assets/map (2).png" id="1_11l1o"]
 [ext_resource type="Script" uid="uid://eq16ts3x2ia3" path="res://scenes/coin.gd" id="1_i64fm"]
-[ext_resource type="Texture2D" uid="uid://cu3wdat0ouma0" path="res://icon.png" id="1_rwqht"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d14el"]
+atlas = ExtResource("1_11l1o")
+region = Rect2(400, 0, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o6xl0"]
 size = Vector2(25, 22)
+
+[sub_resource type="Gradient" id="Gradient_i64fm"]
+offsets = PackedFloat32Array(0.14057508, 0.5079872)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_11l1o"]
+gradient = SubResource("Gradient_i64fm")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="coin" type="Node2D" unique_id=1573009574]
 scale = Vector2(0.5199902, 0.5199902)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=632271044]
-texture = ExtResource("1_rwqht")
+texture = SubResource("AtlasTexture_d14el")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2032750012]
 script = ExtResource("1_i64fm")
@@ -18,5 +31,9 @@ script = ExtResource("1_i64fm")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=974640245]
 position = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_o6xl0")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1985622654]
+color = Color(0.05490196, 0.75686276, 0.92156863, 1)
+texture = SubResource("GradientTexture2D_11l1o")
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

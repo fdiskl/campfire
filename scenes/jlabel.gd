@@ -8,10 +8,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	text = "Press B to revert (%d)" %  Globals.back_left
+	text = "Press J to jump higher (%d)" %  Globals.j_left
 
 
-	if !Globals.back_is_recorded || Globals.back_left == 0:
+	if  Globals.j_left == 0:
 		label_settings.font_color = Color("#b0b0b0")
 	else:
 		label_settings.font_color = Color(255,255,255,255)
