@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://ca5a5ytowmqod"]
+
+[ext_resource type="Texture2D" uid="uid://b0r35rok0oy8" path="res://assets/FX052_nyknck/FX052_02.png" id="2_ma003"]
+[ext_resource type="Texture2D" uid="uid://djlwnjrv0ms75" path="res://assets/FX052_nyknck/FX052_03.png" id="3_r4n7j"]
+[ext_resource type="Texture2D" uid="uid://b826iwv0yl2cl" path="res://assets/FX052_nyknck/FX052_04.png" id="4_kvioh"]
+[ext_resource type="Script" uid="uid://yrvovi1hl4mp" path="res://scenes/delete_after_anim.gd" id="5_s4e7j"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jkv2x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ma003")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_r4n7j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kvioh")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="jump animation" type="Node2D" unique_id=641893645]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1289239433]
+position = Vector2(0, -1.9999999)
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_jkv2x")
+frame_progress = 0.057305403
+script = ExtResource("5_s4e7j")

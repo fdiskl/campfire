@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://d1gcq26t32wmy"]
+
+[ext_resource type="Texture2D" uid="uid://bwi44sb5c5hkj" path="res://assets/FX052_nyknck/FX052_01.png" id="1_ffcuc"]
+[ext_resource type="Texture2D" uid="uid://b0r35rok0oy8" path="res://assets/FX052_nyknck/FX052_02.png" id="2_40c7l"]
+[ext_resource type="Texture2D" uid="uid://djlwnjrv0ms75" path="res://assets/FX052_nyknck/FX052_03.png" id="3_s4qwf"]
+[ext_resource type="Texture2D" uid="uid://b826iwv0yl2cl" path="res://assets/FX052_nyknck/FX052_04.png" id="4_lv41d"]
+[ext_resource type="Script" uid="uid://yrvovi1hl4mp" path="res://scenes/delete_after_anim.gd" id="5_40c7l"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jkv2x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ffcuc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_40c7l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_s4qwf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lv41d")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="jump animation" type="Node2D" unique_id=641893645]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1289239433]
+sprite_frames = SubResource("SpriteFrames_jkv2x")
+frame_progress = 0.057305403
+script = ExtResource("5_40c7l")

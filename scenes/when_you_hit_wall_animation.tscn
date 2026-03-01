@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bur7tpit00ye2"]
+
+[ext_resource type="Texture2D" uid="uid://djxy8fnota5rf" path="res://assets/FX046_nyknck/FX046_01.png" id="1_rnsjm"]
+[ext_resource type="Texture2D" uid="uid://l7km6rnc5q4h" path="res://assets/FX046_nyknck/FX046_02.png" id="2_gs5mp"]
+[ext_resource type="Texture2D" uid="uid://cvdnv5behn86y" path="res://assets/FX046_nyknck/FX046_03.png" id="3_sedfg"]
+[ext_resource type="Script" uid="uid://yrvovi1hl4mp" path="res://scenes/delete_after_anim.gd" id="4_gs5mp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o6xl0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rnsjm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_gs5mp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_sedfg")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="when you hit wall animation" type="Node2D" unique_id=672474611]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=908980000]
+position = Vector2(-8, 0)
+sprite_frames = SubResource("SpriteFrames_o6xl0")
+frame_progress = 0.28155467
+script = ExtResource("4_gs5mp")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_animation_finished"]
